@@ -16,12 +16,6 @@ Route::get('/welcome', function () {
 });
 
 //Простейший GET-роут
-Route::get('/', function()
-{
-    return 'Hello World';
-});
+Route::controller('/', 'HomeController');
 
-Route::get('user/{id}', function($id)
-{
-    echo 'user: '.$id;
-});
+//Route::get('user/{id}', 'AuthController');
