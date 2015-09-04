@@ -17,11 +17,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Project name</a>
+                        <a class="navbar-brand" href="{{url('/')}}">Project name</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
+                            <li class="active"><a href="{{url('/')}}">Home</a></li>
                             <li><a href="#">About</a></li>
                             <li><a href="#">Contact</a></li>
                             <li class="dropdown">
@@ -38,8 +38,10 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Static top</a></li>
-                            <li><a href="#">Fixed top</a></li>
+                            @if(!Auth::check())
+                                <li><a href="/registration">Registration</a></li>
+                                <li><a href="#">Login</a></li>
+                            @endif
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div><!--/.container-fluid -->

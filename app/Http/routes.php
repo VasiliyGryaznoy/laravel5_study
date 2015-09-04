@@ -16,6 +16,13 @@ Route::get('/welcome', function () {
 });
 
 //Простейший GET-роут
-Route::controller('/', 'HomeController');
+Route::get('/', 'HomeController@getIndex');
 
-//Route::get('user/{id}', 'AuthController');
+
+Route::group(['namespace' => 'Auth'], function()
+{
+    Route::get('registration', 'AuthController@getRegistration');
+    Route::post('registration', 'AuthController@postRegistration');
+});
+
+

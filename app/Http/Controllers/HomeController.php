@@ -13,10 +13,5 @@ class HomeController extends Controller
     {
         return view('partials.home');
     }
-    
-    public function getShowUser($id)
-    {
-        return view('users.user'); 
-    }
 }
 
