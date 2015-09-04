@@ -19,10 +19,9 @@ Route::get('/welcome', function () {
 Route::get('/', 'HomeController@getIndex');
 
 
-Route::group(['namespace' => 'Auth'], function()
-{
-    Route::get('registration', 'AuthController@getRegistration');
-    Route::post('registration', 'AuthController@postRegistration');
-});
+Route::controllers([
+    'auth'  =>  'Auth\AuthController',
+    'password'  =>  'Auth\PasswordController',
+]);
 
 

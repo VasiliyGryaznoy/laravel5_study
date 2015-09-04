@@ -9,7 +9,7 @@
                 <h3 class="panel-title">Please sign up for Bootsnipp <small>It's free!</small></h3>
             </div>
             <div class="panel-body">
-                <form role="form" method="POST" action="{{url('registration')}}">
+                <form role="form" method="POST" action="{{url('auth/registration')}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">

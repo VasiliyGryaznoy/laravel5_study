@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use Auth;
-use App\User;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Hash as Hash;
+//use Illuminate\Foundation\Auth\AuthentificatesAndRegistersUsers;
 
 class AuthController extends Controller {
     /*
@@ -18,6 +19,7 @@ class AuthController extends Controller {
       |
      */
 
+//    use AuthentificatesAndRegistersUsers;
     /**
      * Create a new authentication controller instance.
      *
@@ -68,15 +70,43 @@ class AuthController extends Controller {
                     'email' => $email,
                     'password' => $password,
         ]);
-
-//        if (\Illuminate\Support\Facades\Auth::loginUsingId($user->id)) {
-//            echo 'yes';
-//            //redirect()->route('/');
-//        }
         
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            redirect()->route('/');
+//        var_dump($request->all());
+//        die();
+        
+        if (Auth::loginUsingId($user->id)) {
+            return redirect('/');
+        } 
+        else 
+        {
+            var_dump($user->id);
         }
     }
+    
+    public function getLogout()
+    {
+        Auth::logout();
+        
+        return redirect('/');
+    }
+    
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
+    
+    public function postLogin(\Illuminate\Http\Request $request)
+    {
+        $email = $request->input('email');
+        $password = Hash::make($request->input('password'));
 
+        if (Auth::attempt(['email' => $email, 'password' => $password]))
+        {
+            return redirect('/');
+        }
+        else 
+        {
+            return redirect('auth/login');
+        }
+    }
 }

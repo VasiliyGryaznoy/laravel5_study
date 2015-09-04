@@ -39,8 +39,10 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             @if(!Auth::check())
-                                <li><a href="/registration">Registration</a></li>
-                                <li><a href="#">Login</a></li>
+                                <li><a href="{{ url('auth/registration') }}">Registration</a></li>
+                                <li><a href="{{ url('auth/login') }}">Login</a></li>
+                            @else
+                                <li><a href="auth/logout">Logout</a></li>
                             @endif
                         </ul>
                     </div><!--/.nav-collapse -->
