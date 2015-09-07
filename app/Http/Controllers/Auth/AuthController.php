@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Hash as Hash;
+use Illuminate\Support\Facades\Hash;
 //use Illuminate\Foundation\Auth\AuthentificatesAndRegistersUsers;
 
 class AuthController extends Controller {
@@ -98,7 +98,7 @@ class AuthController extends Controller {
     public function postLogin(\Illuminate\Http\Request $request)
     {
         $email = $request->input('email');
-        $password = Hash::make($request->input('password'));
+        $password = $request->input('password');
 
         if (Auth::attempt(['email' => $email, 'password' => $password]))
         {
